@@ -52,6 +52,7 @@ EndpointInfo::EndpointInfo(const EndpointF &ep)
 	_ep.setAuthType(ep.authType);
 	_cmpDesc = createCompareDesc();
 	_desc = createDesc();
+	_subset=ep.subset;
 }
 
 void EndpointInfo::parseConnectAddress()
@@ -122,6 +123,16 @@ const struct sockaddr * EndpointInfo::connectAddrPtr() const
 const string& EndpointInfo::setDivision() const
 {
     return _setDivision;
+}
+
+const string& EndpointInfo::subSet() const
+{
+	return _subset;
+}
+
+void EndpointInfo::subSet(const string& sSubSet)
+{
+	_subset=sSubSet;
 }
 ///////////////////////////////////////////////////////////
 }

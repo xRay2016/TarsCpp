@@ -106,6 +106,7 @@ ServantProxyThreadData::ServantProxyThreadData()
 , _conHash(false)
 , _hashCode(-1)
 , _dyeing(false)
+, _statusRoute(false)
 , _hasTimeout(false)
 , _timeout(0)
 , _sched(NULL)
@@ -249,6 +250,8 @@ string ServantProxy::STATUS_RESULT_DESC   = "STATUS_RESULT_DESC";
 string ServantProxy::STATUS_SETNAME_VALUE = "STATUS_SETNAME_VALUE";
 
 string ServantProxy::STATUS_TRACK_KEY     = "STATUS_TRACK_KEY";
+
+string ServantProxy::STATUS_ROUTE_KEY     = "STATUS_ROUTE_KEY";
 
 ////////////////////////////////////
 ServantProxy::ServantProxy(Communicator * pCommunicator, ObjectProxy ** ppObjectProxy, size_t iClientThreadNum)
@@ -619,6 +622,12 @@ void ServantProxy::invoke(ReqMessage * msg, bool bCoroAsync)
     //染色需要透传
     msg->bDyeing    = pSptd->_dyeing;
     msg->sDyeingKey = pSptd->_dyeingKey;
+
+    //染色routekey需要透传
+    if(pSptd->_statusRoute)
+    {
+        msg->request.status[STATUS_ROUTE_KEY] = pSptd->_statusRouteKey;
+    }
 
     if (msg->bDyeing)
     {

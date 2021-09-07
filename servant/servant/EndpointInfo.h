@@ -193,6 +193,15 @@ public:
     */
     const string& setDivision() const;
 
+    /**
+     * 返回subset分组信息 
+     * 
+     * @return string
+     */    
+    const string& subSet() const;
+
+    void subSet(const string& sSubSet);
+
     /*
      * 获取认证类型
      */
@@ -276,6 +285,11 @@ private:
      * 解析域名成功
      */ 
     bool                   _addressSucc;
+
+    /**
+     * subset分组信息
+     */
+    string                 _subset;
 };
 /////////////////////////////////////////////////////////////////////////////
 }

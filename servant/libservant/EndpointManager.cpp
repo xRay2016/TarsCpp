@@ -701,6 +701,7 @@ EndpointManager::EndpointManager(ObjectProxy * pObjectProxy, Communicator* pComm
 {
     setNetThreadProcess(true);
     init(sObjName, _communicator->getProperty("locator"), setName);
+    _subsetManager.setQueryPrx(_queryFPrx);
 }
 
 EndpointManager::~EndpointManager()
@@ -819,6 +820,16 @@ bool EndpointManager::selectAdapterProxy(ReqMessage * msg,AdapterProxy * & pAdap
 
     //刷新主控
     refreshReg(E_DEFAULT, "");
+
+    //非直连的情况下才用subset过滤
+    if(!_direct)
+    {
+        //利用subset规则过滤_activeEndpoints
+        string route_key = msg->request.status[ServantProxy::STATUS_ROUTE_KEY];
+        set<EndpointInfo> s_active,s_inactive;
+        int ret=_subsetManager.subsetEndpointFilter(msg->request.sServantName,route_key,_activeEndpoints,_inactiveEndpoints,s_active,s_inactive);
+        notifyEndpoints(s_active,s_inactive,true);
+    }
 
     //无效的数据 返回true
     if (!_valid) 

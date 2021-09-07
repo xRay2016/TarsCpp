@@ -21,6 +21,7 @@
 #include "servant/EndpointF.h"
 #include "servant/QueryF.h"
 #include "servant/AppProtocol.h"
+#include "servant/SubsetManager.h"
 #include "util/tc_spin_lock.h"
 #include "util/tc_consistent_hash_new.h"
 
@@ -224,6 +225,11 @@ protected:
      * 主控的路由代理
      */
     QueryFPrx                 _queryFPrx;
+
+    /*
+     * subset分组信息
+    */
+    SubsetManager                 _subsetManager;
 
     /*
      * 数据是否有效,初始化的时候是无效的数据

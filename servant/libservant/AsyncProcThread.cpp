@@ -109,6 +109,18 @@ void AsyncProcThread::callback(ReqMessage * msg)
 	pServantProxyThreadData->_dyeing  = msg->bDyeing;
 	pServantProxyThreadData->_dyeingKey = msg->sDyeingKey;
 
+	//把染色的route_key设置在线程私有数据
+	if(msg->request.status.count(ServantProxy::STATUS_ROUTE_KEY)!=0)
+	{
+		pServantProxyThreadData->_statusRoute = true;
+		pServantProxyThreadData->_statusRouteKey=msg->request.status[ServantProxy::STATUS_ROUTE_KEY];
+	}
+	else
+	{
+		pServantProxyThreadData->_statusRoute = false;
+	}
+	
+
 	pServantProxyThreadData->_cookie = msg->cookie;
 
 	if(msg->adapter)

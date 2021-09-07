@@ -127,6 +127,8 @@ public:
      */
     bool           _dyeing;                          //标识当前线程是否需要染色
     string         _dyeingKey;                        //染色的key值
+    bool           _statusRoute;                     //标识是否需要STATUS_ROUTE_KEY  
+    string         _statusRouteKey;                  //STATUS_ROUTE_KEY的染色值  
 
     /**
      * 允许客户端设置接口级别的超时时间,包括同步和异步、单向
@@ -429,6 +431,8 @@ public:
     static string STATUS_SETNAME_VALUE; //set调用
 
     static string STATUS_TRACK_KEY; //track信息
+
+    static string STATUS_ROUTE_KEY; //路由的染色Key
 
     /**
      * 缺省的同步调用超时时间
