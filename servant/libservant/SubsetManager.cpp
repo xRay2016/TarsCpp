@@ -285,11 +285,4 @@ namespace tars
         cache[servantName] = conf;
     }
 
-    void SubsetManager::setQuery(bool enable, string ruletype, string ruledata)
-    {
-        _queryFPrx->_enable = enable;
-        _queryFPrx->_ruletype = ruletype;
-        _queryFPrx->_ruledata = ruledata;
-    }
-
 }

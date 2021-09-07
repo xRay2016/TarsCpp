@@ -20,8 +20,8 @@
 #include "util/tc_json.h"
 #include "util/tc_consistent_hash_new.h"
 #include "util/tc_timeprovider.h"
-#include "EndpointInfo.h"
-//#include "servant/QueryF.h"
+#include "servant/EndpointInfo.h"
+#include "servant/QueryF.h"
 #include <string>
 #include <map>
 #include <vector>
@@ -42,7 +42,7 @@ struct SubsetConf
     string ruleType;
     string ruleData;
 };
-*/
+
 class QueryPrx
 {
 public:
@@ -58,6 +58,7 @@ public:
     std::string _ruledata;
 };
 typedef QueryPrx* QueryFPrx;
+*/
 
 
 struct KeyRoute
