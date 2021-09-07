@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/root/tars/TarsFramework/tarscpp/util/include",
+                "/root/tars/TarsFramework/tarscpp/servant",
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/src/**",
+                "/root/tars/TarsFramework/tarscpp/servant"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-g",
+                "${file}",
+                "-std=c++11",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
